@@ -226,5 +226,30 @@ ggsave('./results/Ejercicio6.pdf')
 
 ```{r}
 load("data/weatherAUS_distributions.RData")
+grafico1_7 <- ggplot(data = ds,
+                     aes(x = factor(Year), y = MinTemp)) +
+  geom_boxplot()
+
+grafico1_7
+
+grafico2_7 <- ggplot(data = ds,
+                     aes(x = factor(Year), y = MaxTemp,fill = factor(Year))) +
+  geom_violin() + labs(
+    title = "Distribución de temperaturas máximas por año",
+    x = "Año",
+    y = "Temperatura (ºC)",
+    fill = "Año"
+  )
+
+grafico2_7
+
+grafico3_7 <- grafico2_7 +
+  theme(
+    legend.position = "none",
+    axis.text.x = element_text(angle = 45, hjust = 1)
+  )
+
+grafico3_7
+ggsave('./results/Ejercicio7.pdf')
 ```
 
