@@ -127,3 +127,39 @@ ggsave('./results/Ejercicio3.pdf')
 ```
 En este caso la disposición en columnas clarifica mejor las diferencias y permite comparar  mejor los valores de las dos variables.
 Usando geom_jitter() los puntos están desplazados ligeramente para reducir la superposición. Esto permite apreciar mejor cuántas observaciones hay en cada zona, aunque dejan de coincidir exactamente con las coordenadas originales.
+
+# Ejercicio 4
+```{r}
+library(ggplot2)
+load("data/Ejercicio4_Data.Rdata")
+str(DatosEjer4)
+
+grafico1_4 <- ggplot(data = DatosEjer4,
+                   aes(x = Fecha,
+                       y = Ventas,
+                       color = Fabricante)) +
+  geom_point()
+
+grafico1_4
+
+grafico2_4 <- grafico1_4 + geom_line()
+grafico2_4
+
+grafico3_4 <- ggplot(data = DatosEjer4,
+                   aes(x = Fecha,
+                       y = Ventas,
+                       color = Fabricante,
+                       linetype = Fabricante)) +
+  geom_point() +
+  geom_line()
+
+grafico3_4
+
+grafico4_4 <- grafico3_4 +
+  ggtitle("Ventas mensuales de diferentes compañías tecnológicas")
+
+grafico4_4
+
+ggsave('./results/Ejercicio4.pdf')
+```
+El gráfico 1 permite observar las ventas de cada fabricante en las distintas fechas, pero puede resultar difícil identificar la evolución temporal porque los puntos no están conectados
