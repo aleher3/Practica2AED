@@ -253,3 +253,65 @@ grafico3_7
 ggsave('./results/Ejercicio7.pdf')
 ```
 
+
+
+
+# Ejercicio 8
+```{r}
+url <- "http://assets.datacamp.com/blog_assets/chol.txt"
+
+chol <- read.table(url, header = TRUE)
+
+
+
+grafico1_8 <- ggplot(data = chol, aes(x = HEIGHT)) +
+  geom_histogram(
+    aes(y = after_stat(count)),
+    breaks = seq(155, 195, length.out = 21),
+    fill = "blue",
+    alpha = 0.5,
+    color = "red"
+  ) +
+  geom_density(
+    aes(y = after_stat(count)),
+    color = "green"
+  ) +
+  coord_cartesian(xlim = c(155, 195)) +
+  labs(
+    title = "Histograma de la variable Altura",
+    x = "Altura (cm)",
+    y = "Frecuencia"
+  )
+
+grafico1_8
+
+
+grafico2_8 <- ggplot(data = chol, aes(x = HEIGHT)) +
+  geom_histogram(
+    aes(y = after_stat(count)),
+    breaks = seq(155, 195, length.out = 21),
+    fill = "blue",
+    alpha = 0.5,
+    color = "red"
+  ) +
+  geom_density(
+    aes(y = after_stat(count)),
+    color = "green"
+  ) +
+  facet_grid(. ~ MORT) +
+  coord_cartesian(xlim = c(155, 195)) +
+  labs(
+    title = "Histograma de la variable Altura",
+    x = "Altura (cm)",
+    y = "Frecuencia"
+  )
+
+grafico2_8
+
+ggsave('./results/Ejercicio8.pdf')
+```
+
+
+
+
+
