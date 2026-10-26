@@ -147,9 +147,9 @@ grafico2_4
 
 
 grafico3_4 <- ggplot(data = DatosEjer4,
-                   aes(x = Fecha, y = Ventas, group = Fabricante)) +
+                   aes(x = Fecha, y = Ventas, color = Fabricante)) +
   geom_line(aes(linetype = Fabricante, color = Fabricante)) +
-  geom_point(aes(shape = Fabricante, color = Fabricante))
+  geom_point()
 
 
 
@@ -200,5 +200,31 @@ grafico3_5 <- ggplot(data = Experimento,
   scale_color_brewer(palette = "Reds")
 
 grafico3_5
+ggsave('./results/Ejercicio5.pdf')
+```
+# Ejercicio 6
+```{r}
+load('data/iceRiver.Rdata')
+str(ice.river.df)
+
+grafico1_6 <- ggplot(data = ice.river.df,
+                    aes(x = time)) +
+  geom_line(aes(y = flow.vat), color = "red") +
+  geom_line(aes(y = flow.jok), color = "blue") +
+  labs(
+    title = "Caudal diario de dos ríos islandeses",
+    subtitle = "Evolución del caudal durante tres años",
+    x = "Tiempo",
+    y = "Caudal",
+    caption = "Fuente: conjunto de datos iceRiver"
+  )
+
+grafico1_6
+ggsave('./results/Ejercicio6.pdf')
+```
+# Ejercicio 7
+
+```{r}
+load("data/weatherAUS_distributions.RData")
 ```
 
