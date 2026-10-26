@@ -98,3 +98,32 @@ ggsave('./results/Ejercicio2.pdf')
 ```
 
 El color permite distinguir mejor las categorías "Si" y "No"
+
+
+
+# Ejercicio 3
+
+```{r}
+load("data/iris_tidy.Rdata")
+str(iris.tidy)
+iris.grafico1 <- ggplot(data = iris.tidy, aes ( x = Species, y = Value)) + geom_point()
+iris.grafico1
+
+iris.grafico2 <- ggplot(data = iris.tidy, aes ( x = Species, y = Value, color = Part)) + geom_point()
+iris.grafico2
+
+iris.grafico3 <- iris.grafico2 + facet_grid(.~Measure)
+iris.grafico3
+
+iris.grafico4 <- ggplot(data = iris.tidy,
+                        aes(x = Species,
+                            y = Value,
+                            color = Part)) +
+  geom_jitter() +
+  facet_grid(. ~ Measure)
+
+iris.grafico4
+ggsave('./results/Ejercicio3.pdf') 
+```
+En este caso la disposición en columnas clarifica mejor las diferencias y permite comparar  mejor los valores de las dos variables.
+Usando geom_jitter() los puntos están desplazados ligeramente para reducir la superposición. Esto permite apreciar mejor cuántas observaciones hay en cada zona, aunque dejan de coincidir exactamente con las coordenadas originales.
