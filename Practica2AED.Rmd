@@ -55,4 +55,19 @@ library(pacman)
 packages =  c("tidyverse", "knitr", "ggplot2", "datasets", "RColorBrewer",'latex2exp')
 pacman::p_load(char=packages)
 ```
+# Ejercicio 1
+```{r}
+
+load("data/weatherAUS.RData")
+grafico1 <- ggplot(data = ds, aes(x=MinTemp, y = MaxTemp)) + geom_point()
+grafico1
+
+grafico2 <- ggplot(data = ds, aes(x= MinTemp, y= MaxTemp, color = RainTomorrow)) + geom_point()
+grafico2
+
+grafica3 <- grafico2 + ggtitle("Gráfica3 ejercicio 1")
+grafica3
+
+ggsave('./results/Ejercicio1.pdf')
+```
 
